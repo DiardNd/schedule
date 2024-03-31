@@ -11,4 +11,5 @@ export interface ShedulerState {
   month?: string;
   time?: string;
   minutes?: string;
+  addedTime?: string;
 }
