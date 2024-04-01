@@ -24,6 +24,21 @@ export const Monthly = () => {
     reduxDispatch(toggleSetMonth({ month: `${newMonth}` }));
   };
 
+  const months = [
+    { value: '1', name: 'January' },
+    { value: '2', name: 'February' },
+    { value: '3', name: 'March' },
+    { value: '4', name: 'April' },
+    { value: '5', name: 'May' },
+    { value: '6', name: 'June' },
+    { value: '7', name: 'July' },
+    { value: '8', name: 'August' },
+    { value: '9', name: 'September' },
+    { value: '10', name: 'October' },
+    { value: '11', name: 'November' },
+    { value: '12', name: 'December' }
+  ];
+
   return (
     <form
       className={classNames({
@@ -35,18 +50,11 @@ export const Monthly = () => {
         name="month"
         value={month}
         onChange={handleIntervalChange}>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
+        {months.map((m) => (
+          <option key={m.value} value={m.value}>
+            {m.name}
+          </option>
+        ))}
       </select>
     </form>
   );

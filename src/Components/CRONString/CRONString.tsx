@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { checkIsCronValid } from '../../utils/validationLoadCron';
 import { toggleSetAll } from '../../store/modules/Shedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Shedule/types';
 
 import styles from './CRONString.module.css';
 
@@ -22,9 +23,9 @@ export const CRONString = () => {
   const generateCronString = () => {
     let newCronString = '';
 
-    if (option === 'Daily') {
+    if (option === OptionType.Daily) {
       newCronString = `*${interval} * * * *`;
-    } else if (option === 'Weekly') {
+    } else if (option === OptionType.Weekly) {
       if (addedTime) {
         newCronString = `${time!.split(':')[1]},${addedTime!.split(':')[1]} ${
           time!.split(':')[0]
@@ -32,7 +33,7 @@ export const CRONString = () => {
       } else {
         newCronString = `${time!.split(':')[1]} ${time!.split(':')[0]} * * ${dayOfWeek}`;
       }
-    } else if (option === 'Custom') {
+    } else if (option === OptionType.Custom) {
       newCronString = `${time!.split(':')[1]} ${time!.split(':')[0]} * ${month} ${dayOfWeek}`;
     } else {
       newCronString = `0 0 * ${month} *`;
@@ -53,18 +54,18 @@ export const CRONString = () => {
       let newMonth;
 
       if (minute !== '*' && hour !== '*' && dayOfWeek !== '*') {
-        newOption = 'Weekly';
+        newOption = OptionType.Weekly;
         newTime = `${hour}:${minute}`;
         newDayOfWeek = `${dayOfWeek}`;
       } else if (intervalRegex.test(minute)) {
-        newOption = 'Daily';
+        newOption = OptionType.Daily;
         newInterval = minute.substring(2);
       } else if (month !== '*' && minute === '0' && hour === '0' && dayOfWeek === '*') {
-        newOption = 'Monthly';
+        newOption = OptionType.Monthly;
         newTime = `${hour}:${minute}`;
         newMonth = month;
       } else {
-        newOption = 'Custom';
+        newOption = OptionType.Custom;
         newTime = `${hour}:${minute}`;
         newDayOfWeek = dayOfWeek;
         newMonth = month;

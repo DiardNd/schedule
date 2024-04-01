@@ -51,6 +51,16 @@ export const Weekly = () => {
     reduxDispatch(toggleSetWeekly({ day: newDayOfWeek, time: time }));
   };
 
+  const daysOfWeek = [
+    { value: '0', name: 'Monday' },
+    { value: '1', name: 'Tuesday' },
+    { value: '2', name: 'Wednesday' },
+    { value: '3', name: 'Thursday' },
+    { value: '4', name: 'Friday' },
+    { value: '5', name: 'Saturday' },
+    { value: '6', name: 'Sunday' }
+  ];
+
   return (
     <div
       className={classNames({
@@ -63,13 +73,11 @@ export const Weekly = () => {
         value={dayOfWeek}
         onChange={handleDayChange}
         className={styles.daySelector}>
-        <option value="0">Monday</option>
-        <option value="1">Tuesday</option>
-        <option value="2">Wednesday</option>
-        <option value="3">Thursday</option>
-        <option value="4">Friday</option>
-        <option value="5">Saturday</option>
-        <option value="6">Sunday</option>
+        {daysOfWeek.map((day) => (
+          <option key={day.value} value={day.value}>
+            {day.name}
+          </option>
+        ))}
       </select>
       At
       <input
