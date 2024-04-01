@@ -17,11 +17,12 @@ export const SheduleEditor = () => {
   };
 
   return (
-    <div>
+    <div className={styles.scheduleEditor}>
       <h2 className={styles.header}>SheduleEditor</h2>
       <div>
         <label>
           <input
+            className={styles.radioInput}
             type="radio"
             name="scheduleOption"
             value="Weekly"
@@ -35,6 +36,7 @@ export const SheduleEditor = () => {
       <div>
         <label>
           <input
+            className={styles.radioInput}
             type="radio"
             name="scheduleOption"
             value="Daily"
@@ -48,6 +50,7 @@ export const SheduleEditor = () => {
       <div>
         <label>
           <input
+            className={styles.radioInput}
             type="radio"
             name="scheduleOption"
             value="Monthly"
@@ -61,6 +64,7 @@ export const SheduleEditor = () => {
       <div>
         <label>
           <input
+            className={styles.radioInput}
             type="radio"
             name="scheduleOption"
             value="Custom"
@@ -70,8 +74,6 @@ export const SheduleEditor = () => {
           Custom
         </label>
       </div>
-      <button>Load</button>
-      <button>Save</button>
       <CRONString />
     </div>
   );

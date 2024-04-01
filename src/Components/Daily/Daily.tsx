@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -9,11 +9,19 @@ import styles from './Daily.module.css';
 export const Daily = () => {
   const reduxDispatch = useAppDispatch();
   const option = useAppSelector((state) => state.scheduleEditor.option);
+  const storeMinutesInterval = useAppSelector((state) => state.scheduleEditor.minutes);
   const [interval, setInterval] = useState('');
 
+  useEffect(() => {
+    if (storeMinutesInterval) {
+      setInterval(storeMinutesInterval.replace('/', ''));
+    }
+  }, [storeMinutesInterval]);
+
   const handleIntervalChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInterval(event.target.value);
-    reduxDispatch(toggleSetInterval({ minutesInterval: `/${interval}` }));
+    const newInterval = event.target.value;
+    setInterval(newInterval);
+    reduxDispatch(toggleSetInterval({ minutesInterval: `/${newInterval}` }));
   };
 
   return (
@@ -23,7 +31,14 @@ export const Daily = () => {
         [styles.dayOfWeek]: option === 'Daily'
       })}>
       Each
-      <input type="number" min="0" max="59" value={interval} onChange={handleIntervalChange} />
+      <input
+        className={styles.timeInput}
+        type="number"
+        min="0"
+        max="59"
+        value={interval}
+        onChange={handleIntervalChange}
+      />
       Minutes
     </form>
   );

@@ -1,2 +1,28 @@
+.scheduleEditor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.radioInput {
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
 }
