@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { toggleSetMonth } from '../../store/modules/Shedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Shedule/types';
 
 import styles from './Monthly.module.css';
 
@@ -18,7 +19,7 @@ export const Monthly = () => {
     }
   }, [storeMonth]);
 
-  const handleIntervalChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleMonthChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newMonth = event.target.value;
     setMonth(newMonth);
     reduxDispatch(toggleSetMonth({ month: `${newMonth}` }));
@@ -42,14 +43,14 @@ export const Monthly = () => {
   return (
     <form
       className={classNames({
-        [styles.hidden]: option !== 'Monthly',
-        [styles.dayOfWeek]: option === 'Monthly'
+        [styles.hidden]: option !== OptionType.Monthly,
+        [styles.dayOfWeek]: option === OptionType.Monthly
       })}>
       <select
         className={styles.monthSelector}
         name="month"
         value={month}
-        onChange={handleIntervalChange}>
+        onChange={handleMonthChange}>
         {months.map((m) => (
           <option key={m.value} value={m.value}>
             {m.name}

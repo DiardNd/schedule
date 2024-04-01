@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { OptionType } from '../../store/modules/Shedule/types';
 import { toggleSetOption } from '../../store/modules/Shedule/ScheduleSlice';
 import { Monthly } from '../Monthly';
+import { Custom } from '../Custom';
 
 import styles from './SheduleEditor.module.css';
 
@@ -72,6 +73,7 @@ export const SheduleEditor = () => {
             onChange={() => handleOptionChange(OptionType.Custom)}
           />
           Custom
+          <Custom />
         </label>
       </div>
       <CRONString />

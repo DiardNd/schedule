@@ -1,0 +1,27 @@
+.hidden {
+  display: none;
+}
+
+.dayOfWeek {
+  margin-top: 10px;
+}
+
+.monthSelector {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.daySelector {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.timeInput {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

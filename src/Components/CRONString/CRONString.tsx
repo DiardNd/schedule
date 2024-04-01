@@ -53,7 +53,7 @@ export const CRONString = () => {
       let newDayOfWeek;
       let newMonth;
 
-      if (minute !== '*' && hour !== '*' && dayOfWeek !== '*') {
+      if (minute !== '*' && hour !== '*' && dayOfWeek !== '*' && month === '*') {
         newOption = OptionType.Weekly;
         newTime = `${hour}:${minute}`;
         newDayOfWeek = `${dayOfWeek}`;
