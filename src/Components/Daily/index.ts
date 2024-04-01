@@ -1,1 +1,0 @@
-export { Daily } from './Daily';
