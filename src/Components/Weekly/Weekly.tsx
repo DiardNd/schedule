@@ -3,14 +3,15 @@ import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { toggleSetWeekly } from '../../store/modules/Shedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Shedule/types';
 
 import styles from './Weekly.module.css';
 
 export const Weekly = () => {
   const reduxDispatch = useAppDispatch();
   const [time, setTime] = useState('00:00');
-  const [addTime, setAddTime] = useState('00:00');
   const [dayOfWeek, setDayOfWeek] = useState('0');
+  const [addTime, setAddTime] = useState('');
   const [hideTime, setHideTime] = useState(true);
 
   const option = useAppSelector((state) => state.scheduleEditor.option);
@@ -64,8 +65,8 @@ export const Weekly = () => {
   return (
     <div
       className={classNames({
-        [styles.hidden]: option !== 'Weekly',
-        [styles.dayOfWeek]: option === 'Weekly'
+        [styles.hidden]: option !== OptionType.Weekly,
+        [styles.dayOfWeek]: option === OptionType.Weekly
       })}>
       Every
       <select

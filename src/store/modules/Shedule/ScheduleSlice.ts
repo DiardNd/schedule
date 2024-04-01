@@ -8,7 +8,7 @@ const initialState: ShedulerState = {
   minutes: '0',
   month: '1',
   time: '00:00',
-  addedTime: '00:00'
+  addedTime: ''
 };
 
 const scheduleSlice = createSlice({
@@ -40,7 +40,7 @@ const scheduleSlice = createSlice({
         time?: string;
         minutesInterval?: string;
         addedTime?: string;
-        option: string;
+        option?: string;
       }>
     ) {
       const { month, day, time, minutesInterval, addedTime, option } = action.payload;

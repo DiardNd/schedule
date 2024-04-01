@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { toggleSetInterval } from '../../store/modules/Shedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Shedule/types';
 
 import styles from './Daily.module.css';
 
@@ -27,8 +28,8 @@ export const Daily = () => {
   return (
     <form
       className={classNames({
-        [styles.hidden]: option !== 'Daily',
-        [styles.dayOfWeek]: option === 'Daily'
+        [styles.hidden]: option !== OptionType.Daily,
+        [styles.dayOfWeek]: option === OptionType.Daily
       })}>
       Each
       <input
