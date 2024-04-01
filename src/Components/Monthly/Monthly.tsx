@@ -44,7 +44,7 @@ export const Monthly = () => {
     <form
       className={classNames({
         [styles.hidden]: option !== OptionType.Monthly,
-        [styles.dayOfWeek]: option === OptionType.Monthly
+        [styles.monthly]: option === OptionType.Monthly
       })}>
       <select
         className={styles.monthSelector}

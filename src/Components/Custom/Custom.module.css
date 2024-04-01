@@ -2,8 +2,11 @@
   display: none;
 }
 
-.dayOfWeek {
-  margin-top: 10px;
+.custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
 }
 
 .monthSelector {
@@ -21,6 +24,7 @@
 }
 
 .timeInput {
+  margin-left: 5px;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;

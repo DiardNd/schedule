@@ -29,7 +29,7 @@ export const Daily = () => {
     <form
       className={classNames({
         [styles.hidden]: option !== OptionType.Daily,
-        [styles.dayOfWeek]: option === OptionType.Daily
+        [styles.daily]: option === OptionType.Daily
       })}>
       Each
       <input

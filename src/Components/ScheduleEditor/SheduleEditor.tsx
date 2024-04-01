@@ -20,62 +20,64 @@ export const SheduleEditor = () => {
   return (
     <div className={styles.scheduleEditor}>
       <h2 className={styles.header}>SheduleEditor</h2>
-      <div>
-        <label>
-          <input
-            className={styles.radioInput}
-            type="radio"
-            name="scheduleOption"
-            value="Weekly"
-            checked={option === OptionType.Weekly}
-            onChange={() => handleOptionChange(OptionType.Weekly)}
-          />
-          Weekly
+      <ul className={styles.optionsList}>
+        <li className={styles.optionItem}>
+          <label className={styles.optionLabel}>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              name="scheduleOption"
+              value="Weekly"
+              checked={option === OptionType.Weekly}
+              onChange={() => handleOptionChange(OptionType.Weekly)}
+            />
+            Weekly
+          </label>
           <Weekly />
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            className={styles.radioInput}
-            type="radio"
-            name="scheduleOption"
-            value="Daily"
-            checked={option === OptionType.Daily}
-            onChange={() => handleOptionChange(OptionType.Daily)}
-          />
-          Daily
+        </li>
+        <li className={styles.optionItem}>
+          <label className={styles.optionLabel}>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              name="scheduleOption"
+              value="Daily"
+              checked={option === OptionType.Daily}
+              onChange={() => handleOptionChange(OptionType.Daily)}
+            />
+            Daily
+          </label>
           <Daily />
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            className={styles.radioInput}
-            type="radio"
-            name="scheduleOption"
-            value="Monthly"
-            checked={option === OptionType.Monthly}
-            onChange={() => handleOptionChange(OptionType.Monthly)}
-          />
-          Monthly
+        </li>
+        <li className={styles.optionItem}>
+          <label className={styles.optionLabel}>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              name="scheduleOption"
+              value="Monthly"
+              checked={option === OptionType.Monthly}
+              onChange={() => handleOptionChange(OptionType.Monthly)}
+            />
+            Monthly
+          </label>
           <Monthly />
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            className={styles.radioInput}
-            type="radio"
-            name="scheduleOption"
-            value="Custom"
-            checked={option === OptionType.Custom}
-            onChange={() => handleOptionChange(OptionType.Custom)}
-          />
-          Custom
+        </li>
+        <li className={styles.optionItem}>
+          <label className={styles.optionLabel}>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              name="scheduleOption"
+              value="Custom"
+              checked={option === OptionType.Custom}
+              onChange={() => handleOptionChange(OptionType.Custom)}
+            />
+            Custom
+          </label>
           <Custom />
-        </label>
-      </div>
+        </li>
+      </ul>
       <CRONString />
     </div>
   );

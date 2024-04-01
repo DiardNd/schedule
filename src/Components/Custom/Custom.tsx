@@ -98,7 +98,7 @@ export const Custom = () => {
     <form
       className={classNames({
         [styles.hidden]: option !== OptionType.Custom,
-        [styles.dayOfWeek]: option === OptionType.Custom
+        [styles.custom]: option === OptionType.Custom
       })}>
       <select
         className={styles.monthSelector}

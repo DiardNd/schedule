@@ -2,10 +2,13 @@
   display: none;
 }
 
-.dayOfWeek {
-  margin-top: 10px;
+.daily {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
 }
 
 .timeInput {
-  margin-left: 10px;
+  margin: 0 10px;
 }

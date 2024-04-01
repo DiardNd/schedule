@@ -2,8 +2,11 @@
   display: none;
 }
 
-.dayOfWeek {
-  margin-top: 10px;
+.monthly {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
 }
 
 .monthSelector {
