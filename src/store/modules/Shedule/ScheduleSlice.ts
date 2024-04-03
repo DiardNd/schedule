@@ -4,7 +4,7 @@ import { OptionType, ShedulerState } from './types';
 
 const initialState: ShedulerState = {
   option: OptionType.Weekly,
-  day: '0',
+  day: '1',
   minutes: '0',
   month: '1',
   time: '00:00',

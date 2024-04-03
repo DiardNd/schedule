@@ -7,7 +7,7 @@ export const checkIsCronValid = (cron: string) => {
   if (!cron) {
     return 'You must fill in your cron';
   } else if (!cronRegex.test(cron)) {
-    return 'Please enter a valid cron in the minutes [0-59 or *] hour [0-23 or *] day of mont [1-31 or *] month [1-12 или *] day of week [0-6 or *] format ';
+    return 'Please enter a valid cron in the minutes [0-59 or *] hour [0-23 or *] day of mont [1-31 or *] month [1-12 или *] day of week [1-7 or *] format ';
   }
 
   return null;
