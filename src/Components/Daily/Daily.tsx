@@ -35,7 +35,7 @@ export const Daily = () => {
       <input
         className={styles.timeInput}
         type="number"
-        min="0"
+        min="1"
         max="59"
         value={interval}
         onChange={handleIntervalChange}

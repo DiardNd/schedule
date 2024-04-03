@@ -39,23 +39,62 @@ export const CRONString = () => {
       newCronString = `0 0 * ${month} *`;
     }
     setCronString(newCronString);
+    setErrorMessage(checkIsCronValid(newCronString));
   };
 
   const loadCronString = () => {
     const parts = cronString.split(' ');
-    if (parts.length === 5) {
+    if (parts.length === 5 && !errorMessage) {
       const [minute, hour, day, month, dayOfWeek] = parts;
       const intervalRegex = /\*\/[0-5]?\d$|\/\*59$/;
 
       let newOption;
       let newTime;
+      let newAddedTime;
       let newInterval;
       let newDayOfWeek;
       let newMonth;
 
+      const formatTime = (time: string) => {
+        const [hours, minutes] = time.split(':');
+        const formattedHours = hours.length === 1 ? `0${hours}` : hours;
+        const formattedMinutes = minutes.length === 1 ? `0${minutes}` : minutes;
+
+        return `${formattedHours}:${formattedMinutes}`;
+      };
+
+      const isAddedTime = (hour: string, minute: string) => {
+        let formattedHours = '';
+        let formattedMinutes = '';
+        let formattedAddedHours = '';
+        let formattedAddedMinutes = '';
+
+        if (hour.includes(',')) {
+          const [hours, addedHours] = hour.split(',');
+          formattedHours = hours.length === 1 ? `0${hours}` : hours;
+          formattedAddedHours = addedHours.length === 1 ? `0${addedHours}` : addedHours;
+        } else {
+          formattedHours = hour.length === 1 ? `0${hour}` : hour;
+        }
+
+        if (minute.includes(',')) {
+          const [minutes, addedMinutes] = minute.split(',');
+          formattedMinutes = minutes.length === 1 ? `0${minutes}` : minutes;
+          formattedAddedMinutes = addedMinutes.length === 1 ? `0${addedMinutes}` : addedMinutes;
+        } else {
+          formattedMinutes = minute.length === 1 ? `0${minute}` : minute;
+        }
+
+        return `${formattedHours}:${formattedMinutes} ${formattedAddedHours}:${formattedAddedMinutes}`;
+      };
+
       if (minute !== '*' && hour !== '*' && dayOfWeek !== '*' && month === '*') {
         newOption = OptionType.Weekly;
-        newTime = `${hour}:${minute}`;
+        newTime = isAddedTime(`${hour}`, `${minute}`).substring(0, 5);
+
+        if (isAddedTime(`${hour}`, `${minute}`).length > 10) {
+          newAddedTime = isAddedTime(`${hour}`, `${minute}`).substring(6);
+        } else newAddedTime = '';
         newDayOfWeek = `${dayOfWeek}`;
       } else if (intervalRegex.test(minute)) {
         newOption = OptionType.Daily;
@@ -66,7 +105,7 @@ export const CRONString = () => {
         newMonth = month;
       } else {
         newOption = OptionType.Custom;
-        newTime = `${hour}:${minute}`;
+        newTime = formatTime(`${hour}:${minute}`);
         newDayOfWeek = dayOfWeek;
         newMonth = month;
       }
@@ -77,7 +116,8 @@ export const CRONString = () => {
           time: newTime,
           minutesInterval: newInterval,
           day: newDayOfWeek,
-          month: newMonth
+          month: newMonth,
+          addedTime: newAddedTime
         })
       );
     }
@@ -85,6 +125,7 @@ export const CRONString = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCronString(event.target.value);
+
     setErrorMessage(checkIsCronValid(event.target.value));
   };
 
@@ -97,10 +138,10 @@ export const CRONString = () => {
         value={cronString}
         onChange={handleInputChange}
       />
-      <button className={styles.btn} onClick={generateCronString}>
+      <button className={styles.button} onClick={generateCronString}>
         Save
       </button>
-      <button className={styles.btn} onClick={loadCronString} disabled={!isValid}>
+      <button className={styles.button} onClick={loadCronString} disabled={!isValid}>
         Load
       </button>
       {errorMessage && <div className={styles.error}>{errorMessage}</div>}

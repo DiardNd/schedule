@@ -17,6 +17,7 @@ export const Weekly = () => {
   const option = useAppSelector((state) => state.scheduleEditor.option);
   const storeDay = useAppSelector((state) => state.scheduleEditor.day);
   const storeTime = useAppSelector((state) => state.scheduleEditor.time);
+  const storeAddedTime = useAppSelector((state) => state.scheduleEditor.addedTime);
 
   useEffect(() => {
     if (storeDay) {
@@ -25,19 +26,20 @@ export const Weekly = () => {
     if (storeTime) {
       setTime(storeTime);
     }
-  }, [storeDay, storeTime]);
+    if (storeAddedTime) setAddTime(storeAddedTime);
+  }, [storeDay, storeTime, storeAddedTime]);
 
   const handleShowTime = () => {
     setHideTime(!hideTime);
-    if (hideTime) {
-      setAddTime('');
-    }
+    const newAddedTime = '';
+    setAddTime(newAddedTime);
+    reduxDispatch(toggleSetWeekly({ day: dayOfWeek, time: time, addedTime: newAddedTime }));
   };
 
   const handleTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newTime = event.target.value;
     setTime(newTime);
-    reduxDispatch(toggleSetWeekly({ day: dayOfWeek, time: newTime }));
+    reduxDispatch(toggleSetWeekly({ day: dayOfWeek, time: newTime, addedTime: addTime }));
   };
 
   const handleAddedTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -49,17 +51,17 @@ export const Weekly = () => {
   const handleDayChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newDayOfWeek = event.target.value;
     setDayOfWeek(newDayOfWeek);
-    reduxDispatch(toggleSetWeekly({ day: newDayOfWeek, time: time }));
+    reduxDispatch(toggleSetWeekly({ day: newDayOfWeek, time: time, addedTime: addTime }));
   };
 
   const daysOfWeek = [
-    { value: '0', name: 'Monday' },
-    { value: '1', name: 'Tuesday' },
-    { value: '2', name: 'Wednesday' },
-    { value: '3', name: 'Thursday' },
-    { value: '4', name: 'Friday' },
-    { value: '5', name: 'Saturday' },
-    { value: '6', name: 'Sunday' }
+    { value: '1', name: 'Monday' },
+    { value: '2', name: 'Tuesday' },
+    { value: '3', name: 'Wednesday' },
+    { value: '4', name: 'Thursday' },
+    { value: '5', name: 'Friday' },
+    { value: '6', name: 'Saturday' },
+    { value: '7', name: 'Sunday' }
   ];
 
   return (
