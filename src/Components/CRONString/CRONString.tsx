@@ -2,8 +2,8 @@ import { ChangeEvent, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { checkIsCronValid } from '../../utils/validationLoadCron';
-import { toggleSetAll } from '../../store/modules/Shedule/ScheduleSlice';
-import { OptionType } from '../../store/modules/Shedule/types';
+import { toggleSetAll } from '../../store/modules/Schedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Schedule/types';
 
 import styles from './CRONString.module.css';
 

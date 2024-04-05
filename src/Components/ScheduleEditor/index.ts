@@ -1,1 +1,1 @@
-export { SheduleEditor } from './SheduleEditor';
+export { ScheduleEditor } from './ScheduleEditor';

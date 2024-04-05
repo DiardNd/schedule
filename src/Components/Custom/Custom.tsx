@@ -2,8 +2,8 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { toggleSetAll } from '../../store/modules/Shedule/ScheduleSlice';
-import { OptionType } from '../../store/modules/Shedule/types';
+import { toggleSetAll } from '../../store/modules/Schedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Schedule/types';
 
 import styles from './Custom.module.css';
 

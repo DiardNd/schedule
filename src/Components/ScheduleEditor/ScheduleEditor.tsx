@@ -2,14 +2,14 @@ import { Weekly } from '../Weekly';
 import { Daily } from '../Daily';
 import { CRONString } from '../CRONString';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { OptionType } from '../../store/modules/Shedule/types';
-import { toggleSetOption } from '../../store/modules/Shedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Schedule/types';
+import { toggleSetOption } from '../../store/modules/Schedule/ScheduleSlice';
 import { Monthly } from '../Monthly';
 import { Custom } from '../Custom';
 
-import styles from './SheduleEditor.module.css';
+import styles from './ScheduleEditor.module.css';
 
-export const SheduleEditor = () => {
+export const ScheduleEditor = () => {
   const reduxDispatch = useAppDispatch();
   const option = useAppSelector((state) => state.scheduleEditor.option);
 
@@ -19,7 +19,7 @@ export const SheduleEditor = () => {
 
   return (
     <div className={styles.scheduleEditor}>
-      <h2 className={styles.header}>SheduleEditor</h2>
+      <h2 className={styles.header}>ScheduleEditor</h2>
       <ul className={styles.optionsList}>
         <li className={styles.optionItem}>
           <label className={styles.optionLabel}>

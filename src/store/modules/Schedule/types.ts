@@ -5,7 +5,7 @@ export enum OptionType {
   Custom = 'Custom'
 }
 
-export interface ShedulerState {
+export interface ScheduleState {
   option: OptionType;
   day?: string;
   month?: string;
