@@ -2,8 +2,8 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { toggleSetWeekly } from '../../store/modules/Shedule/ScheduleSlice';
-import { OptionType } from '../../store/modules/Shedule/types';
+import { toggleSetWeekly } from '../../store/modules/Schedule/ScheduleSlice';
+import { OptionType } from '../../store/modules/Schedule/types';
 
 import styles from './Weekly.module.css';
 
@@ -12,7 +12,6 @@ export const Weekly = () => {
   const [time, setTime] = useState('00:00');
   const [dayOfWeek, setDayOfWeek] = useState('0');
   const [addTime, setAddTime] = useState('');
-  const [hideTime, setHideTime] = useState(true);
 
   const option = useAppSelector((state) => state.scheduleEditor.option);
   const storeDay = useAppSelector((state) => state.scheduleEditor.day);
@@ -28,13 +27,6 @@ export const Weekly = () => {
     }
     if (storeAddedTime) setAddTime(storeAddedTime);
   }, [storeDay, storeTime, storeAddedTime]);
-
-  const handleShowTime = () => {
-    setHideTime(!hideTime);
-    const newAddedTime = '';
-    setAddTime(newAddedTime);
-    reduxDispatch(toggleSetWeekly({ day: dayOfWeek, time: time, addedTime: newAddedTime }));
-  };
 
   const handleTimeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newTime = event.target.value;
@@ -90,14 +82,8 @@ export const Weekly = () => {
         value={time}
         onChange={handleTimeChange}
       />
-      <button className={styles.btn} onClick={handleShowTime}>
-        +
-      </button>
       <input
-        className={classNames({
-          [styles.hidden]: hideTime,
-          [styles.timeInput]: !hideTime
-        })}
+        className={styles.timeInput}
         type="time"
         name="addTime"
         value={addTime}

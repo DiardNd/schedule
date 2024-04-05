@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { OptionType, ShedulerState } from './types';
+import { OptionType, ScheduleState } from './types';
 
-const initialState: ShedulerState = {
+const initialState: ScheduleState = {
   option: OptionType.Weekly,
   day: '1',
-  minutes: '0',
+  minutes: '*',
   month: '1',
   time: '00:00',
   addedTime: ''

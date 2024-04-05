@@ -1,9 +1,9 @@
-import { SheduleEditor } from './Components/ScheduleEditor';
+import { ScheduleEditor } from './Components/ScheduleEditor';
 
 function App() {
   return (
     <div className="App">
-      <SheduleEditor />
+      <ScheduleEditor />
     </div>
   );
 }
